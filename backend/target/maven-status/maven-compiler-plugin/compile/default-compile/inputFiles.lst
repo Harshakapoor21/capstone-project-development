@@ -16,5 +16,7 @@ C:\Users\harsh\OneDrive\Desktop\capstone-project-development\backend\src\main\ja
 C:\Users\harsh\OneDrive\Desktop\capstone-project-development\backend\src\main\java\com\lms\repository\UserRepository.java
 C:\Users\harsh\OneDrive\Desktop\capstone-project-development\backend\src\main\java\com\lms\security\JwtFilter.java
 C:\Users\harsh\OneDrive\Desktop\capstone-project-development\backend\src\main\java\com\lms\security\JwtUtil.java
+C:\Users\harsh\OneDrive\Desktop\capstone-project-development\backend\src\main\java\com\lms\service\AssignmentService.java
 C:\Users\harsh\OneDrive\Desktop\capstone-project-development\backend\src\main\java\com\lms\service\AuthService.java
 C:\Users\harsh\OneDrive\Desktop\capstone-project-development\backend\src\main\java\com\lms\service\CustomUserDetailsService.java
+C:\Users\harsh\OneDrive\Desktop\capstone-project-development\backend\src\main\java\com\lms\service\ProgressService.java

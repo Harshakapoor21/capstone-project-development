@@ -1,7 +1,7 @@
 package com.lms.controller;
 
 import com.lms.entity.Progress;
-import com.lms.repository.ProgressRepository;
+import com.lms.service.ProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,30 +9,35 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/progress")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProgressController {
 
     @Autowired
-    private ProgressRepository progressRepository;
+    private ProgressService progressService;
 
     @PostMapping
     public Progress saveProgress(@RequestBody Progress progress) {
-        return progressRepository.save(progress);
+        return progressService.saveProgress(progress);
     }
 
     @GetMapping
     public List<Progress> getAllProgress() {
-        return progressRepository.findAll();
+        return progressService.getAllProgress();
     }
 
-    @GetMapping("/{id}")
-    public Progress getProgressById(@PathVariable Long id) {
-        return progressRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Progress not found"));
+    @GetMapping("/student/{email}")
+    public List<Progress> getStudentProgress(@PathVariable String email) {
+        return progressService.getStudentProgress(email);
+    }
+
+    @GetMapping("/assignment/{assignmentId}")
+    public List<Progress> getAssignmentProgress(@PathVariable Long assignmentId) {
+        return progressService.getAssignmentProgress(assignmentId);
     }
 
     @DeleteMapping("/{id}")
     public String deleteProgress(@PathVariable Long id) {
-        progressRepository.deleteById(id);
-        return "Progress deleted";
+        progressService.deleteProgress(id);
+        return "Progress deleted successfully!";
     }
 }

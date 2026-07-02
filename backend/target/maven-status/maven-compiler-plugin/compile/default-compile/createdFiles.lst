@@ -1,4 +1,5 @@
 com\lms\controller\AuthController.class
+com\lms\service\AssignmentService.class
 com\lms\entity\User.class
 com\lms\BackendApplication.class
 com\lms\entity\Assignment.class
@@ -10,6 +11,7 @@ com\lms\repository\UserRepository.class
 com\lms\controller\ProgressController.class
 com\lms\config\SecurityConfig.class
 com\lms\repository\ModuleRepository.class
+com\lms\service\ProgressService.class
 com\lms\repository\AssignmentRepository.class
 com\lms\dto\LoginRequest.class
 com\lms\dto\RegisterRequest.class

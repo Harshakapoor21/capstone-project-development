@@ -1,7 +1,7 @@
 package com.lms.controller;
 
 import com.lms.entity.Assignment;
-import com.lms.repository.AssignmentRepository;
+import com.lms.service.AssignmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,34 +9,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/assignments")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AssignmentController {
 
     @Autowired
-    private AssignmentRepository assignmentRepository;
+    private AssignmentService assignmentService;
 
-    // Create assignment
     @PostMapping
     public Assignment createAssignment(@RequestBody Assignment assignment) {
-        return assignmentRepository.save(assignment);
+        return assignmentService.createAssignment(assignment);
     }
 
-    // Get all assignments
     @GetMapping
     public List<Assignment> getAllAssignments() {
-        return assignmentRepository.findAll();
+        return assignmentService.getAllAssignments();
     }
 
-    // Get assignment by ID
-    @GetMapping("/{id}")
-    public Assignment getAssignmentById(@PathVariable Long id) {
-        return assignmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Assignment not found"));
+    @GetMapping("/module/{moduleId}")
+    public List<Assignment> getAssignmentsByModule(@PathVariable Long moduleId) {
+        return assignmentService.getAssignmentsByModule(moduleId);
     }
 
-    // Delete assignment
     @DeleteMapping("/{id}")
     public String deleteAssignment(@PathVariable Long id) {
-        assignmentRepository.deleteById(id);
-        return "Assignment deleted";
+        assignmentService.deleteAssignment(id);
+        return "Assignment deleted successfully!";
     }
 }

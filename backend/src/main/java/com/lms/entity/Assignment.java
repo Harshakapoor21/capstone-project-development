@@ -3,6 +3,7 @@ package com.lms.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "assignments")
 public class Assignment {
 
     @Id
@@ -13,13 +14,18 @@ public class Assignment {
 
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "module_id")
+    private Module module;
+
     public Assignment() {
     }
 
-    public Assignment(Long id, String title, String description) {
+    public Assignment(Long id, String title, String description, Module module) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.module = module;
     }
 
     public Long getId() {
@@ -44,5 +50,13 @@ public class Assignment {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
     }
 }

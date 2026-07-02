@@ -3,25 +3,28 @@ package com.lms.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "progress")
 public class Progress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
+    private String studentEmail;
 
-    private Long moduleId;
+    @ManyToOne
+    @JoinColumn(name = "assignment_id")
+    private Assignment assignment;
 
     private boolean completed;
 
     public Progress() {
     }
 
-    public Progress(Long id, Long userId, Long moduleId, boolean completed) {
+    public Progress(Long id, String studentEmail, Assignment assignment, boolean completed) {
         this.id = id;
-        this.userId = userId;
-        this.moduleId = moduleId;
+        this.studentEmail = studentEmail;
+        this.assignment = assignment;
         this.completed = completed;
     }
 
@@ -33,20 +36,20 @@ public class Progress {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getStudentEmail() {
+        return studentEmail;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setStudentEmail(String studentEmail) {
+        this.studentEmail = studentEmail;
     }
 
-    public Long getModuleId() {
-        return moduleId;
+    public Assignment getAssignment() {
+        return assignment;
     }
 
-    public void setModuleId(Long moduleId) {
-        this.moduleId = moduleId;
+    public void setAssignment(Assignment assignment) {
+        this.assignment = assignment;
     }
 
     public boolean isCompleted() {
